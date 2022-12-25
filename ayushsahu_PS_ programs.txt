@@ -1,0 +1,354 @@
+QUES1
+#include<stdio.h>
+void main(){
+int bs,ts,hra,pf,allow,da,grade;
+char ch;
+printf("enter the basic salary:");
+scanf("%d",&bs);
+printf("enter the grade");
+scanf("%ch",&grade);
+hra = 0.2*bs;
+da = 0.5*bs;
+pf = 0.11*bs;
+if(ch=='A')
+allow= 1700;
+else if(ch=='B')
+allow = 1500;
+else
+allow = 1300;
+ts =bs+hra+da+allow-pf;
+printf("total salary is %d",ts);
+}
+QUES2
+
+#include<stdio.h> 
+void main(){
+int a,b,c;
+printf("enter the number:");
+scanf("%d %d %d",&a,&b,&c);
+if(a>b && a>c)
+{
+printf("a is bigger number:");
+}
+else if(b>a && b>c)
+{
+printf("b is greater number:");
+}
+else
+{
+    printf("c is greater number:");
+}
+}
+
+QUES3
+
+#include<stdio.h>
+void main(){
+char c; 
+int lowercase_vowel,uppercase_vowel;
+printf("enter an alphabet: ");
+scanf("%c",&c); 
+lowercase_vowel= (c =='a'||c =='e'||c == 'i'||c =='o'||c == 'u');
+uppercase_vowel=(c =='A'||c == 'E'||c == 'I'||c == 'O'||c == 'U');
+if(lowercase_vowel|| uppercase_vowel)
+printf("%c is a vowel",c);
+else
+printf("%c is a consonant",c);
+}
+
+QUES4
+
+#include<stdio.h>
+void main(){
+int yrs;
+scanf("%d",&yrs);
+((yrs%4==0 && yrs%100!=0)||(yrs%400==0))?printf("leap year"):printf("not a leap year");
+}
+
+QUES5
+
+#include<stdio.h>
+void main(){
+int side1,side2,side3;
+printf("enter the sides of triangle:");
+scanf("%d %d %d",&side1,&side2,&side3);
+if (side1 == side2 ||side2 == side3)
+printf("the given triangle is equilateral triangle:");
+else if(side1 == side2|| side2 == side3|| side3 == side1)
+printf("the given triangle is isosceles triangle:");
+else 
+printf("the given triangle is scalene:");
+}
+
+QUES6
+
+#include <stdio.h>
+void main()
+{
+     int tmp;
+
+    printf("Input days temperature : ");
+    scanf("%d",&tmp);
+   if(tmp<0)
+             printf("Freezing weather.\n");
+   else if(tmp<10)
+     printf("Very cold weather.\n");
+    else if(tmp<20)
+     printf("Cold weather.\n");
+       else if(tmp<30)
+    printf("Normal in temp.\n");
+       else if(tmp<40)
+      printf("Its Hot.\n");
+    else
+   printf("Its very hot.\n");
+
+}
+
+QUES7
+
+#include<stdio.h>
+void main(){
+int i,j;
+for(i=1;i<=5;i++)
+{
+for(j=1;j<=i;j++)
+{
+printf("*");
+}
+printf("\n");
+}
+}
+
+QUES8
+
+#include<stdio.h>
+void main(){
+int i,j;
+for(i=1;i<=4;i++)
+{
+for(j=1;j<=i;j++) {
+printf("%d",i+j-1);
+}
+printf("\n")}
+}
+}
+
+DAY4.Q1
+
+#include<stdio.h>
+void palindrom(int n){
+int result=0,remainder,save ;
+save = n;
+while(n!=0){
+remainder = n%10;
+result = result*10 + remainder;
+n = n/10;
+}
+if(result==save){
+    printf("it is palindrom number");
+}
+else{
+printf("not a palindrom number");
+}
+}
+void main(){
+    int n;
+printf("enter the number");
+scanf("%d",&n);
+ palindrom(n);
+}
+
+DAY4.Q3
+
+#include<stdio.h>
+void fun(int n){
+if(n==0)
+return;
+else
+   printf("%d",n);
+   return fun(n-1); // calling at end(tail recursion)
+}
+int main(){
+fun(3);
+return 0;
+
+
+}
+
+DAY4.Q4
+
+// perfect number definition, it is a positive integer that is equal to the sum of all its proper positive divisor
+// excluding the number itself.
+// 6 is a perfect number
+//because the proper positive divisor of 6 are 1,2 and 3(excluding 6)
+// and sum of all its positive divisor is 1+2+3=6
+#include<stdio.h>
+void perfect(int n){
+int i,rem,sum=0;// rem=remainder
+for(i=1;i<n;i++){
+rem=n%i;
+if(rem==0){
+    sum = sum+i;
+}
+}
+if(sum=n){
+    printf("it is a perfect number");
+
+}
+else{
+    printf("it is not a perfect number");
+}
+}
+void main(){
+    perfect(6);
+}
+
+DAY4.Q6
+
+#include<stdio.h>
+#include<math.h>
+void armstrong(int no){
+int copy,rem,n=0,ans=0;//n is no. of digits
+copy=no;
+while(copy!=0){
+    copy = copy/10;
+    n++;
+}
+copy = no;
+while(copy!=0){
+  rem = copy%10;  
+  ans = ans + pow(rem,n);// here n is number of digits
+  copy = copy/10;
+}
+if(ans == no){
+    printf("armstrong number");
+}
+else{
+    printf("not a armstrong number");
+}
+}
+int main(){
+    int no;
+    printf("enter the number");
+    scanf("%d",&no);
+armstrong(153);
+return 0;
+
+}
+
+DAY4.Q7
+
+#include<stdio.h>
+#include<math.h>
+
+int Strong(int m, int sum){
+ 
+        if(m==0){
+            return sum;
+        }
+        int x = 1;
+        for(int i = 1; i<=m%10; i++){
+            x = x*i;
+        }
+        return Strong(m/10,sum + x );
+}
+  
+void main(){
+int n;
+printf("enter the number");
+scanf("%d",&n);
+for(int i = 0; i<=n; i++){
+            if (Strong(i,0)==i) {
+                    printf("%d ",i);
+            }
+        }
+}
+ 
+
+DAY4.Q8
+
+#include<stdio.h>
+void gcd(int a,int b){
+int dividend,divisor,rem;
+if(a>b){
+dividend=a;
+divisor=b;
+}
+else{
+dividend=b;
+divisor=a;
+}
+while(divisor!=0){
+    rem = dividend%divisor;
+    dividend=divisor;
+    divisor=rem;
+    printf("%d is GCD ",dividend);
+}
+}
+ void main(){
+int a,b;
+printf("enter the values of a and b");
+scanf("%d%d",&a,&b);
+gcd(15,7);
+ }
+
+DAY4.Q9
+
+#include<stdio.h>
+void lcm(int a,int b){
+int L;
+for(L=a>b?a:b;L<=a*b;L++)
+if(L%a==0&& L%b==0)
+break;
+printf("LCM is %d",L);
+
+}
+void main(){
+int a,b,L;
+printf("enter the value of a and b");
+scanf("%d%d",&a,&b);
+lcm(4,6);
+
+}
+
+DAY4.Q10
+
+void power(int a,int b){
+int p=1,i;
+for(i=1;i<=b;i++)
+p = p*a;// logic 
+printf("answer is %d",p);
+}
+void main(){
+int a,b;
+printf("enter the value of a and b");
+scanf("%d%d",&a,&b);
+power(2,5);
+}
+
+DAY8.Q2
+
+#include<stdio.h>
+#include<math.h>
+int number(int a,int b,int k ){
+int c,x;
+c= pow(a,b);
+while(c>0&&k>0){
+x=c%10;
+c=c/10;
+k=k-1; 
+}
+return x;
+}
+void main(){
+int k;
+k=number(15,2,2);// number,square,digit required from right
+printf("%d",k);
+}
+
+
+
+
+
+
+
